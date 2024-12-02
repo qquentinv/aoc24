@@ -19,18 +19,12 @@ if len(l1) != len(l2):
     print("Les listes non pas autant d'élément")
 
 
-# Défi partie 1
-while len(l1) != 0:
-    # On récup le min de la liste
-    minL1 = min(l1)
-    minL2 = min(l2)
+# Défi partie 2 
+sum = 0
 
-    # On supprime l'élément de la liste
-    l1.remove(minL1)
-    l2.remove(minL2)
+for elt in l1:
+    occ = l2.count(elt)
+    find = elt * occ
+    sum += find
 
-    # On calcule la distance
-    count += abs(minL1 - minL2)
-
-
-print(f"Distance: {count}")
+print(f"sum: {sum}")
