@@ -7,6 +7,13 @@ input = [
     [1,3,6,7,9], # SAFE
 ]
 
+input = []
+
+with open("input.txt", "r") as file:
+    for line in file:
+        array_lines = list(map(int, line.split()))
+        input.append(array_lines)
+
 trend = None
 error = False
 safe = 0
