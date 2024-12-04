@@ -80,12 +80,24 @@ def testMethod(line, last):
             print("-----------SAFE")
             return True
 
+
+# TODO FAIRE fonctionner cette méthode et garder une logique simple dans la testMethod
+def searchError(newLine):
+    return newLine
+
 # On parcourt toutes les lignes
 for line in input:
     print("-----------INPUT ENTRY") 
     result = testMethod(line, False)
     if(result is True):
         safe += 1
+    else:
+        # Supprimer chaque élément dans la line et tester chaque element en moins
+        # mettre une compteur et dire s'il y a un safe > 1 dans les ayant tous supprimer 
+        newLine = searchError(line)
+        result2 = testMethod(newLine, True)
+        if (result2 is True):
+            safe += 1 
 
 print(f"Safe: {safe}")
 
