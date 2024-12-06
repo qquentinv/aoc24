@@ -11,11 +11,11 @@ input = [
     "MXMXAXMASX"
 ]
 
-#input = []
+input = []
 
-#with open("input.txt", "r") as file:
-#    for line in file:
-#        input.append(line)
+with open("input.txt", "r") as file:
+    for line in file:
+        input.append(line)
 
 total = 0
 
@@ -37,30 +37,20 @@ def findCarac(caracSearch, line):
 
 def searchInDiagonal(input, line, posFind, i): 
     countXmas = 0
-    countDiago1 = 0
-    countDiago2 = 0
 
     for p in posFind:
+        countDiago = 0
         # Diagonale 1
         if(i+1 < len(input) and len(line) - p >= 2 and i-1 >= 0 and len(line) - p >= 2):
             # Regarder en haut à droite vers bas gauche
             if(input[i+1][p+1] == "M"):
                 if(input[i-1][p-1] == "S"):
                         print(f"--find MAS")
-                        countDiago1 += 1
+                        countDiago += 1
             elif(input[i+1][p+1] == "S"):
                 if(input[i-1][p-1] == "M"):
                         print(f"--find SAM")
-                        countDiago1 += 1
-
-            if(input[i-1][p-1] == "M"):
-                if(input[i+1][p+1] == "S"):
-                        print(f"--find MAS")
-                        countDiago1 += 1
-            elif(input[i-1][p-1] == "S"):
-                if(input[i+1][p+1] == "M"):
-                        print(f"--find SAM")
-                        countDiago1 += 1
+                        countDiago += 1
 
 
         # Diagonale 2
@@ -69,22 +59,13 @@ def searchInDiagonal(input, line, posFind, i):
             if(input[i-1][p+1] == "M"):
                 if(input[i+1][p-1] == "S"):
                         print(f"--find MAS")
-                        countDiago2 += 1
+                        countDiago += 1
             elif(input[i-1][p+1] == "S"):
                 if(input[i+1][p-1] == "M"):
                         print(f"--find SAM")
-                        countDiago2 += 1
+                        countDiago += 1
 
-            if(input[i+1][p-1] == "M"):
-                if(input[i-1][p+1] == "S"):
-                        print(f"--find MAS")
-                        countDiago2 += 1
-            elif(input[i+1][p-1] == "S"):
-                if(input[i-1][p+1] == "M"):
-                        print(f"--find SAM")
-                        countDiago2 += 1
-
-        if(countDiago1 + countDiago2 > 4): 
+        if(countDiago == 2): 
             countXmas += 1
 
     return countXmas
